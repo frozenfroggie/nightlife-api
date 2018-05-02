@@ -21,7 +21,7 @@ const githubAuth = require('./passport/strategies/githubAuth.js');
 const googleAuth = require('./passport/strategies/googleAuth.js');
 const facebookAuth = require('./passport/strategies/facebookAuth.js');
 
-const publicPath = path.join(__dirname, '/dist');
+const publicPath = path.join('https://s3.us-east-2.amazonaws.com/nightlife/dist');
 
 const app = express();
 app.use(helmet());
