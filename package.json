@@ -1,0 +1,20 @@
+{
+  "name": "nightlife-api",
+  "version": "1.0.0",
+  "description": "API for Nightlife App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/frozenfroggie/nightlife-api.git"
+  },
+  "author": "frozenfroggie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frozenfroggie/nightlife-api/issues"
+  },
+  "homepage": "https://github.com/frozenfroggie/nightlife-api#readme"
+}
