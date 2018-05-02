@@ -21,7 +21,7 @@ const githubAuth = require('./passport/strategies/githubAuth.js');
 const googleAuth = require('./passport/strategies/googleAuth.js');
 const facebookAuth = require('./passport/strategies/facebookAuth.js');
 
-const publicPath = 'http://d18nfc42thdztt.cloudfront.net';
+const publicPath = path.join(__dirname, '/dist');
 
 const app = express();
 app.use(helmet());
