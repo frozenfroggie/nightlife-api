@@ -21,7 +21,7 @@ const githubAuth = require('./passport/strategies/githubAuth.js');
 const googleAuth = require('./passport/strategies/googleAuth.js');
 const facebookAuth = require('./passport/strategies/facebookAuth.js');
 
-const publicPath = path.join(__dirname, '../dist');
+const publicPath = path.join(__dirname, '/dist');
 
 const app = express();
 app.use(helmet());
@@ -71,7 +71,7 @@ app.use( (error,req,res,next) => {
   }
 });
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8081;
 app.listen(port);
 
 module.exports = app;

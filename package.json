@@ -16,5 +16,29 @@
   "bugs": {
     "url": "https://github.com/frozenfroggie/nightlife-api/issues"
   },
-  "homepage": "https://github.com/frozenfroggie/nightlife-api#readme"
+  "homepage": "https://github.com/frozenfroggie/nightlife-api#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^6.2.1",
+    "aws-sdk": "^2.226.1",
+    "axios": "^0.17.1",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "express-session": "^1.15.6",
+    "helmet": "^3.12.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^8.2.1",
+    "moment": "^2.22.0",
+    "mongoose": "^5.0.13",
+    "mongoose-beautiful-unique-validation": "^7.1.1",
+    "mongoose-findorcreate": "^3.0.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth20": "^1.0.0",
+    "validator": "^9.4.1"
+  }
 }
