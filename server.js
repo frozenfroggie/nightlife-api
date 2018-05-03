@@ -2,7 +2,6 @@ require('./config/config');
 
 const path = require('path');
 const express = require('express');
-// const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet')
@@ -22,8 +21,6 @@ const githubAuth = require('./passport/strategies/githubAuth.js');
 const googleAuth = require('./passport/strategies/googleAuth.js');
 const facebookAuth = require('./passport/strategies/facebookAuth.js');
 
-// const publicPath = path.join(__dirname, '/dist');
-
 const app = express();
 app.use(cors());
 app.use(helmet());
@@ -40,11 +37,6 @@ app.use(session({
 }));
 
 app.use(bodyParser.json())
-// app.use(morgan('dev'));
-
-app.use('/', function(req,res) {
-  res.send('<h1>Welcome to nightlife api!</h1>');
-});
 
 auth(app);
 githubAuth();
@@ -54,26 +46,6 @@ googleAuth();
 app.use('/search', searchRoutes);
 app.use('/users', usersRoutes);
 app.use('/socialAuth', socialAuthRoutes);
-//app.use('/connect', connectRoutes);
-
-// app.use( (req,res,next) => {
-//   const error = new Error('Not found');
-//   error.status = 404;
-//   next(error);
-// });
-//
-// app.use( (error,req,res,next) => {
-//   if(process.env.NODE_ENV === 'dev') {
-//     res.status(error.status || 500);
-//     res.json({
-//       error: {
-//         message: error.message
-//       }
-//     });
-//   } else {
-//     res.sendFile(publicPath + '/error.html');
-//   }
-// });
 
 const port = process.env.PORT || 8081;
 app.listen(port);
