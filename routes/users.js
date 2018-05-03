@@ -80,7 +80,7 @@ router.get('/confirmation/:token', function(req, res) {
   } catch(err) {
     res.send(err);
   }
-  res.redirect('/');
+  res.redirect('http://nightlife.s3-website.us-east-2.amazonaws.com');
 });
 
 //login
