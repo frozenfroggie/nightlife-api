@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
       return verificationToken.generate(user._id);
     })
     .then(verificationToken => {
-      const url = `https://vast-everglades-58513.herokuapp.com/users/confirmation/${verificationToken}`;
+      const url = `http://nightlife.s3-website.us-east-2.amazonaws.com/users/confirmation/${verificationToken}`;
       const sgMail = require('@sendgrid/mail');
       sgMail.setApiKey(process.env.SENDGRID_API_KEY);
       const msg = {
