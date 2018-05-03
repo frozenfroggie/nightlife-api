@@ -9,7 +9,8 @@ const helmet = require('helmet')
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const fileUpload = require('express-fileupload');
-                   require('isomorphic-fetch');
+const cors = require('cors');
+             require('isomorphic-fetch');
 
 const searchRoutes = require('./routes/search');
 const usersRoutes = require('./routes/users');
@@ -21,9 +22,10 @@ const githubAuth = require('./passport/strategies/githubAuth.js');
 const googleAuth = require('./passport/strategies/googleAuth.js');
 const facebookAuth = require('./passport/strategies/facebookAuth.js');
 
-const publicPath = path.join(__dirname, '/dist');
+// const publicPath = path.join(__dirname, '/dist');
 
 const app = express();
+app.use(cors());
 app.use(helmet());
 app.use(fileUpload());
 
@@ -40,7 +42,7 @@ app.use(session({
 app.use(bodyParser.json())
 // app.use(morgan('dev'));
 
-app.use('/', express.static(publicPath));
+// app.use('/', express.static(publicPath));
 
 auth(app);
 githubAuth();
@@ -52,24 +54,24 @@ app.use('/users', usersRoutes);
 app.use('/socialAuth', socialAuthRoutes);
 //app.use('/connect', connectRoutes);
 
-app.use( (req,res,next) => {
-  const error = new Error('Not found');
-  error.status = 404;
-  next(error);
-});
-
-app.use( (error,req,res,next) => {
-  if(process.env.NODE_ENV === 'dev') {
-    res.status(error.status || 500);
-    res.json({
-      error: {
-        message: error.message
-      }
-    });
-  } else {
-    res.sendFile(publicPath + '/error.html');
-  }
-});
+// app.use( (req,res,next) => {
+//   const error = new Error('Not found');
+//   error.status = 404;
+//   next(error);
+// });
+//
+// app.use( (error,req,res,next) => {
+//   if(process.env.NODE_ENV === 'dev') {
+//     res.status(error.status || 500);
+//     res.json({
+//       error: {
+//         message: error.message
+//       }
+//     });
+//   } else {
+//     res.sendFile(publicPath + '/error.html');
+//   }
+// });
 
 const port = process.env.PORT || 8080;
 app.listen(port);
