@@ -103,7 +103,7 @@ router.post('/refreshTokens', function(req, res) {
     console.log('findByRefreshToken', JSON.stringify(user, null, 4));
     return user.generateAndSaveTokens().then(newTokens => {
       console.log('generateAndSaveTokens', JSON.stringify(newTokens, null, 4));
-      res.header('Authorization', `Bearer ${newTokens.authToken}`).send({refreshToken: newTokens.refreshToken});
+      res.header('Authorization', `Bearer ${newTokens.authToken}`).send({authorization: newTokens.authToken, refreshToken: newTokens.refreshToken});
     });
   }).catch(err => {
     res.status(401).send({error: 'refresh token expired'});
