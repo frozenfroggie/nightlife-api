@@ -1,7 +1,6 @@
 //facebook authentication
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
-const FacebookAuthModel = require('../../models/facebookAuth.js');
 const User = require('../../models/user.js');
 const pick = require('lodash/pick');
 

@@ -1,7 +1,4 @@
 const mongoose = require("mongoose");
-const GithubAuthModel = require('../models/githubAuth.js');
-const FacebookAuthModel = require('../models/facebookAuth.js');
-const GoogleAuthModel = require('../models/googleAuth.js');
 const User = require('../models/user.js');
 const passport = require('passport');
 
