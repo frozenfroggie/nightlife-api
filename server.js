@@ -23,6 +23,13 @@ const googleAuth = require('./passport/strategies/googleAuth.js');
 const facebookAuth = require('./passport/strategies/facebookAuth.js');
 
 const app = express();
+const whitelist = ['http://localhost:8080'];
+const corsOptions = {
+  origin: (origin, cb) => {
+    whitelist.indexOf(origin) !== -1 ? cb(null, true) : cb(new Error('Not allowed by CORS'));
+  },
+  exposedHeaders: ['Authorization']
+}
 app.use(cors());
 app.use(helmet());
 app.use(fileUpload());
