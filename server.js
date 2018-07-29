@@ -1,6 +1,6 @@
 require('./config/config');
 
-const http2 = require('http2');
+// const http2 = require('http2');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
@@ -65,9 +65,9 @@ const options = {
 }
 const port = process.env.PORT || 8081;
 
-// app.listen(port);
-http2.createServer(options, app).listen(port, () => {
-  console.log(`Listen on ${port}`);
-});
+app.listen(port);
+// http2.createServer(options, app).listen(port, () => {
+//   console.log(`Listen on ${port}`);
+// });
 
 module.exports = app;
