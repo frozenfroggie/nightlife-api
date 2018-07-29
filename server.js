@@ -23,7 +23,7 @@ const googleAuth = require('./passport/strategies/googleAuth.js');
 const facebookAuth = require('./passport/strategies/facebookAuth.js');
 
 const app = express();
-const whitelist = ['http://localhost:8080'];
+const whitelist = ['http://localhost:8080', 'http://gonightlife.tk.s3-website.us-east-2.amazonaws.com', 'https://gonightlife.tk'];
 const corsOptions = {
   origin: (origin, cb) => {
     whitelist.indexOf(origin) !== -1 ? cb(null, true) : cb(new Error('Not allowed by CORS'));
