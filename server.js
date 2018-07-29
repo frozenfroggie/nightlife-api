@@ -1,5 +1,7 @@
 require('./config/config');
 
+const http2 = require('http2');
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,7 +16,6 @@ const cors = require('cors');
 const searchRoutes = require('./routes/search');
 const usersRoutes = require('./routes/users');
 const socialAuthRoutes = require('./routes/socialAuth');
-const connectRoutes = require('./routes/connect');
 
 const auth = require('./passport/auth.js');
 const githubAuth = require('./passport/strategies/githubAuth.js');
@@ -27,7 +28,7 @@ app.use(helmet());
 app.use(fileUpload());
 
 console.log(process.env.MONGODB_URI);
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 app.use(session({
   store: new MongoStore({mongooseConnection: mongoose.connection}),
@@ -43,11 +44,23 @@ githubAuth();
 facebookAuth();
 googleAuth();
 
+app.get('/', (req, res) => {
+  res.json({message: 'connected'});
+})
 app.use('/search', searchRoutes);
 app.use('/users', usersRoutes);
 app.use('/socialAuth', socialAuthRoutes);
 
+const options = {
+  key: fs.readFileSync('./server.key'),
+  cert: fs.readFileSync('./server.crt'),
+  allowHTTP1: true
+}
 const port = process.env.PORT || 8081;
-app.listen(port);
+
+// app.listen(port);
+http2.createServer(options, app).listen(port, () => {
+  console.log(`Listen on ${port}`);
+});
 
 module.exports = app;
